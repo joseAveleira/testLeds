@@ -7,6 +7,7 @@ bool ledState = false; // Estado inicial del LED
 void setup() {
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, ledState); // Inicializar el LED apagado
+  Serial.begin(115200);
 
 }
 
@@ -15,6 +16,8 @@ void loop() {
   if (touchValue < 20) { // Detecta el toque
     ledState = !ledState; // Cambia el estado del LED
     digitalWrite(LED_PIN, ledState ? HIGH : LOW); // Actualiza el LED
-    delay(300); // Pequeña pausa para evitar múltiples activaciones
+    Serial.print("Estado del LED: ");
+Serial.println(ledState ? "ENCENDIDO" : "APAGADO");
+    delay(600); // Pequeña pausa para evitar múltiples activaciones
   }
 }
